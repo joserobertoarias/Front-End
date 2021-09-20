@@ -1,0 +1,15 @@
+
+
+
+<div *ngIf="!listado">
+    <img src="../assets/loading.gif" />
+  </div>
+  
+  <div *ngIf="listado?.length == 0">
+      <span #msgNoHay><ng-content select="[msgNohayPeliculas]"></ng-content></span>
+    <span *ngIf="!msgNoHay.innerHTML.trim()">No has datos que mostrar</span>
+  </div>
+  
+  <ng-container *ngIf="listado&& listado.length > 0">
+    <ng-content select="[contenido-peliculas]"></ng-content>
+  </ng-container>

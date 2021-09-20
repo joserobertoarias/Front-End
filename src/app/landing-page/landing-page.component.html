@@ -1,0 +1,14 @@
+
+<app-rating (ratingEmitter)="ratingEmiterEventHandler($event)"></app-rating>
+
+<!--Variable de referencia de plantilla-->
+<!--Binding de evento-->
+<!-- <button (click)="cargador.click()">Cargar Archivo</button> -->
+
+<h2>En Cines</h2>
+
+<app-listado-peliculas [peliculas]="peliculasEnCines"></app-listado-peliculas>
+
+<h2>Futuros Estrenos</h2>
+
+<app-listado-peliculas [peliculas]="peliculasProximosEstrenos"></app-listado-peliculas>

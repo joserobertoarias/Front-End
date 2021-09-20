@@ -1,0 +1,8 @@
+<mat-icon *ngFor="let i of iconsArray;let index=index"
+(mouseenter)="mouseEnterEventHandler(index)"
+(mouseleave)="mouseLeaveEventHandler()"
+(click)="clickEventHandler(index)"
+[ngClass]="{checked: ratingSelected > index}"
+>
+    star
+</mat-icon>

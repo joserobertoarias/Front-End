@@ -1,0 +1,37 @@
+.peliculas-contenedor {
+    display: flex;
+}
+
+.pelicula-contenedor {
+    border: 1px solid #ccc;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 11px;
+    margin: 5px;  
+    padding: 5px;   
+    text-align: center;
+}
+
+.pelicula-footer {
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn {
+    min-width: 100px;
+}
+
+.btn-space {
+    width: 1rem;
+}
+.imgPelicula {
+    width: 225px;
+    height: auto;
+}
+
+.titulo-pelicula {
+    font-weight: bold;
+    font-size: 18px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    margin: 15px;
+
+}

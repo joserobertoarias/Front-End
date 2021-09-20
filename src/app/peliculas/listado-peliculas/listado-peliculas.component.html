@@ -1,0 +1,24 @@
+
+
+
+  <app-listado-generico [listado]="peliculas"> 
+    <ng-container msgNohayPeliculas>
+      <div>Mensaje Personalizado parar no hay datos peliculas que mostrar</div>
+    </ng-container>
+    <ng-container contenido-peliculas> 
+      <div class="peliculas-contenedor">
+        <div *ngFor="let pelicula of peliculas; let index = index" 
+        class="pelicula-contenedor">
+          <div><img src="{{pelicula.img}}" class="imgPelicula"/></div>
+          <div class="titulo-pelicula">{{pelicula.titulo}}</div>
+          <div class="pelicula-footer">
+            <button mat-flat-button color="primary" class="btn">Editar</button>
+            <div class="btn-space"></div>
+            <button mat-flat-button color="warn" class="btn">Eliminar</button>            
+          </div>
+        </div>
+      </div>   
+    </ng-container>  
+  </app-listado-generico>
+  
+
