@@ -24,7 +24,20 @@ import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.com
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 
 import { ReactiveFormsModule } from  '@angular/forms'
-import { MatInputModule } from '@angular/material/input'
+import { MatInputModule } from '@angular/material/input';
+import { FormularioGeneroComponent } from './generos/formulario-genero/formulario-genero.component';
+import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component'
+import { MatSelectModule } from  '@angular/material/select';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { FormularioActoresComponent } from './actores/formulario-actores/formulario-actores.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from  '@angular/material/core';
+import { ImagenComponent } from './utilidades/imagen/imagen.component';
+import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component';
+import { MatTabsModule } from  '@angular/material/tabs';
+
+import { MarkdownModule } from 'ngx-markdown';
+import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,6 +57,12 @@ import { MatInputModule } from '@angular/material/input'
     EditarCineComponent,
     EditarGeneroComponent,
     EditarPeliculaComponent,
+    FormularioGeneroComponent,
+    FiltroPeliculasComponent,
+    FormularioActoresComponent,
+    ImagenComponent,
+    InputMarkdownComponent,
+    FormularioCineComponent,
   ],
 
   imports: [
@@ -52,7 +71,13 @@ import { MatInputModule } from '@angular/material/input'
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatTabsModule,
+    MarkdownModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

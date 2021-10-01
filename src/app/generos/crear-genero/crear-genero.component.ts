@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormGroup } from '@angular/forms'
-import { FormBuilder } from '@angular/forms';
+import { generoDTO } from 'src/app/model/generos/generoDTO';
 
 @Component({
   selector: 'app-crear-genero',
@@ -10,21 +9,19 @@ import { FormBuilder } from '@angular/forms';
 })
 export class CrearGeneroComponent implements OnInit {
 
-  constructor(private router: Router, private formbuilder: FormBuilder) { }
-
-  generoForm: FormGroup;
+  constructor(private router: Router) { }
 
 
   ngOnInit(): void {
-    this.generoForm = this.formbuilder.group({
-      nombre: ''
-    });
+
   }
 
-  guardarCambios():void {
+  guardarCambiosFromCrear(genero: generoDTO):void {
     //.. guardar los cambios.
+    console.log(genero);
     this.router.navigate(['/generos']);
 
   }
+
 
 }

@@ -12,6 +12,7 @@ import { EditarActorComponent } from './actores/editar-actor/editar-actor.compon
 import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
+import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component';
 
 const routes: Routes = [
   {path: '', component: LandingPageComponent},
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path: 'cines',component: IndiceCinesComponent},
   {path: 'cines/crear', component: CrearCineComponent},
   {path: 'cines/editar/:id', component: EditarCineComponent}, 
+  {path: 'peliculas/buscar', component: FiltroPeliculasComponent},
   {path: '**', redirectTo: ''} //willcard for support any address rout
 ];
 
