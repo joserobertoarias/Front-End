@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { cineDTO } from 'src/app/model/cineDTO';
 
 @Component({
   selector: 'app-formulario-cine',
@@ -9,15 +10,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormularioCineComponent implements OnInit {
   constructor(private formBuilder: FormBuilder) {}
 
-  cineForm: FormGroup;
+  formularioCine: FormGroup;
+
+ @Input()
+ modelo: cineDTO;
+
+ @Output()
+ cineEmmitter: EventEmitter<cineDTO> = new EventEmitter<cineDTO>();
 
   ngOnInit(): void {
-    this.cineForm = this.formBuilder.group({
+    this.formularioCine = this.formBuilder.group({
       nombre: ['', { validators: [Validators.required] }],
     });
   }
 
 
-
+  onSubmit():void {
+    this.cineEmmitter.emit(this.formularioCine.value);
+  }
   
 }

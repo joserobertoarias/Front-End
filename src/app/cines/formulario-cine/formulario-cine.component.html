@@ -1,10 +1,10 @@
-<form>
+<form [formGroup]="formularioCine" (submit)="onSubmit()" >
   <mat-form-field appearance="fill">
     <mat-label>Nombre*</mat-label>
-    <input type="text" matInput />
+    <input type="text" matInput formControl="nombre" />
   </mat-form-field>
   <div>
-      <button mat-flat-button color="primary" [disabled]=""></button>
+      <button mat-flat-button color="primary" [disabled]="formularioCine.invalid"></button>
       <a mat-stroked-button routerLink="/cines">Cancelar</a>
   </div>
 </form>
