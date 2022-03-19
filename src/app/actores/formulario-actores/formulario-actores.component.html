@@ -1,3 +1,5 @@
+<app-mostrar-errores [errores]="errores"></app-mostrar-errores>
+
 <form (submit)="guardar()" [formGroup]="formularioActor">
     <mat-form-field appearance="standard">
         <mat-label>Nombre</mat-label>
@@ -10,7 +12,9 @@
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
     <app-imagen [urlImagenActual]="inputModelActor?.foto" (selectedFile)="getFile($event)"></app-imagen>
-    <app-input-markdown (cambioContenidoMarkDown)="cambioMarkDown($event)"></app-input-markdown>
+    <app-input-markdown 
+    [contenidoMarkDown]="inputModelActor?.biografia"
+    (cambioContenidoMarkDown)="cambioMarkDown($event)"></app-input-markdown>
     <div>
         <button mat-flat-button color="primary" [disabled]="formularioActor.invalid">Guardar Cambios</button>
         <a mat-stroked-button routerLink="/actores">Cancelar</a>

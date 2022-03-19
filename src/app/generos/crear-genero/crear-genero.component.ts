@@ -1,27 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { generoDTO } from 'src/app/model/generos/generoDTO';
+import { generoDTO } from 'src/app/model/generoDTO';
+import { GenerosService } from 'src/app/servicios/generos.service';
+import { parsearErroresApi } from 'src/app/utilidades/utils';
 
 @Component({
   selector: 'app-crear-genero',
   templateUrl: './crear-genero.component.html',
   styleUrls: ['./crear-genero.component.css']
 })
-export class CrearGeneroComponent implements OnInit {
+export class CrearGeneroComponent {
 
-  constructor(private router: Router) { }
+  errores: string[] = [];
+  constructor(private router: Router, private generoService: GenerosService) { }
 
-
-  ngOnInit(): void {
-
-  }
 
   guardarCambiosFromCrear(genero: generoDTO):void {
-    //.. guardar los cambios.
-    console.log(genero);
-    this.router.navigate(['/generos']);
-
+    this.generoService.crear(genero).subscribe(
+      () => {
+        this.router.navigate(['/generos']);
+      }, 
+        (error) => this.errores = parsearErroresApi(error)
+    );  
   }
-
 
 }

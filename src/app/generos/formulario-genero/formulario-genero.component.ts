@@ -1,7 +1,7 @@
 import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { generoDTO } from '../../model/generos/generoDTO';
+import { generoDTO } from '../../model/generoDTO';
 import { EventEmitter } from '@angular/core';
 import { primeraLetraMayuscula } from '../../utilidades/validadores/primeraLetraMayuscula';
 
@@ -15,6 +15,9 @@ export class FormularioGeneroComponent implements OnInit {
   constructor(private router: Router, private formbuilder: FormBuilder) { }
 
   generoForm: FormGroup;
+
+  @Input()
+  errores: string[]=[];
 
   @Input()
   modelo: generoDTO;
@@ -31,6 +34,7 @@ export class FormularioGeneroComponent implements OnInit {
 
 
     this.generoForm = new FormGroup({
+      id: new FormControl(0),
       nombre: new FormControl('', {validators: [Validators.required, Validators.minLength(3), primeraLetraMayuscula()]})
     });
 
@@ -43,6 +47,8 @@ export class FormularioGeneroComponent implements OnInit {
 
   guardarCambios():void {
     //.. emitir los cambios al componente padre
+    console.info('Guardar cambios formulario-genero')
+    console.log(this.generoForm.value);
     this.onSubmit.emit(this.generoForm.value)
 
   }

@@ -1,4 +1,8 @@
+import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
+import { actorEdicionDTO } from 'src/app/model/actorDTO';
+import { ActoresService } from 'src/app/servicios/actores.service';
 
 @Component({
   selector: 'app-indice-actores',
@@ -7,9 +11,46 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndiceActoresComponent implements OnInit {
 
-  constructor() { }
+  constructor(private actoresService: ActoresService) { }
+
+
+  actores: actorEdicionDTO[];
+
+  columnasAmostrar = ['id','nombre','acciones'];
+  cantidadTotalRegistros;
+  paginaActual = 1;
+  cantidadRegistrosAMostrar = 10;
 
   ngOnInit(): void {
+
+    this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
+
   }
+
+  cargarRegistros(pagina: number, cantidadElementosAMostrar){ 
+    this.actoresService.obtenerTodos(pagina, cantidadElementosAMostrar)
+    .subscribe((respuesta: HttpResponse<actorEdicionDTO[]>) => {
+      
+      this.actores = respuesta.body;
+
+      this.cantidadTotalRegistros = respuesta.headers.get("cantidadTotalRegistros");
+
+    }, error => console.error(error));
+
+  }
+
+  actualizarPaginacion(datos: PageEvent){
+    this.paginaActual = datos.pageIndex + 1;
+    this.cantidadRegistrosAMostrar = datos.pageSize;
+    this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
+
+  }
+
+  borrar(id: number) {
+    this.actoresService.borrar(id).subscribe(() => {
+      this.cargarRegistros(this.paginaActual, this.cantidadRegistrosAMostrar);
+    }, error => console.error(error));
+  }
+
 
 }

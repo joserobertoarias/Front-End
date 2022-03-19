@@ -17,11 +17,16 @@ export class FormularioActoresComponent implements OnInit {
   @Input()
   inputModelActor: actorEdicionDTO;
 
+  @Input()
+  errores: string[] = [];
 
   constructor() { }
 
+  imagenCambiada = false;
+
   ngOnInit(): void {
     this.formularioActor = new FormGroup({
+      id: new FormControl(0),
       nombre: new FormControl('',{validators:[Validators.required]}),
       fechaNac: new FormControl(''),
       foto: new FormControl(''),
@@ -36,15 +41,20 @@ export class FormularioActoresComponent implements OnInit {
   }
 
   guardar():void {
+    if (!this.imagenCambiada){
+      this.formularioActor.patchValue({'foto':null});
+    }
     this.onSubmit.emit(this.formularioActor.value);
   
   }
 
   getFile(imagen):void {
+    this.imagenCambiada = true;
     this.formularioActor.get("foto").setValue(imagen);
   }
 
   cambioMarkDown(texto: string) {
+ 
     this.formularioActor.get('biografia').setValue(texto);
   }
 

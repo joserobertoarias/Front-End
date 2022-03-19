@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import { HttpClientModule } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListadoPeliculasComponent } from './peliculas/listado-peliculas/listado-peliculas.component';
@@ -23,7 +23,7 @@ import { EditarCineComponent } from './cines/editar-cine/editar-cine.component';
 import { EditarGeneroComponent } from './generos/editar-genero/editar-genero.component';
 import { EditarPeliculaComponent } from './peliculas/editar-pelicula/editar-pelicula.component';
 
-import { ReactiveFormsModule } from  '@angular/forms'
+import { ReactiveFormsModule, FormsModule } from  '@angular/forms'
 import { MatInputModule } from '@angular/material/input';
 import { FormularioGeneroComponent } from './generos/formulario-genero/formulario-genero.component';
 import { FiltroPeliculasComponent } from './peliculas/filtro-peliculas/filtro-peliculas.component'
@@ -35,9 +35,27 @@ import { MatNativeDateModule } from  '@angular/material/core';
 import { ImagenComponent } from './utilidades/imagen/imagen.component';
 import { InputMarkdownComponent } from './utilidades/input-markdown/input-markdown.component';
 import { MatTabsModule } from  '@angular/material/tabs';
+import { LeafletModule } from '@asymmetrik/ngx-leaflet';
+import { MatAutocompleteModule } from '@angular/material/autocomplete'
+import { MatTableModule } from '@angular/material/table'
+import { DragDropModule } from '@angular/cdk/drag-drop'
+
+import { MatPaginatorModule } from '@angular/material/paginator'
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner'
 
 import { MarkdownModule } from 'ngx-markdown';
 import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine.component';
+import { MapaComponent } from './utilidades/mapa/mapa.component';
+import { FormularioPelicualsComponent } from './peliculas/formulario-pelicuals/formulario-pelicuals.component';
+import { SelectorMultipleComponent } from './utilidades/selector-multiple/selector-multiple.component';
+import { AutocompleteActoresComponent } from './actores/autocomplete-actores/autocomplete-actores.component';
+import { MostrarErroresComponent } from './utilidades/mostrar-errores/mostrar-errores.component';
+
+
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { AutorizadoComponent } from './seguridad/autorizado/autorizado.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -63,6 +81,12 @@ import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine
     ImagenComponent,
     InputMarkdownComponent,
     FormularioCineComponent,
+    MapaComponent,
+    FormularioPelicualsComponent,
+    SelectorMultipleComponent,
+    AutocompleteActoresComponent,
+    MostrarErroresComponent,
+    AutorizadoComponent, 
   ],
 
   imports: [
@@ -71,13 +95,22 @@ import { FormularioCineComponent } from './cines/formulario-cine/formulario-cine
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
+    FormsModule,
     MatInputModule,
     MatSelectModule,
     MatCheckboxModule,
     MatDatepickerModule,
     MatNativeDateModule,
     MatTabsModule,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    LeafletModule,
+    MatAutocompleteModule,
+    MatTableModule,
+    DragDropModule,
+    HttpClientModule,
+    MatPaginatorModule,
+    MatProgressSpinnerModule,
+    SweetAlert2Module.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
